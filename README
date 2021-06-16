@@ -1,0 +1,30 @@
+To run the server:
+    1. npm install
+    2. node index.js  
+    3. npm run devStart(optional: to start the server in nodemon)
+    4. the server starts at http://localhost:3000/
+Endpoints:
+default link --> http://localhost:3000/app/v1/
+    1.  "/addUser" ->
+            Adds a new user and the expected fields are:
+                name,
+                mobile,
+                email,
+                address {
+                    street (optional)
+                    locality (optional)
+                    city (optional)
+                    state (optional)
+                    pincode (optional)
+                    coordinates
+                }
+    2.  "/getAllUsers?" ->
+            There are two query options:
+                a.  "?page=" : User can pass page=<Required page value> to see data for that page i.e. list of user details sorted according to createdAt timestamp. The limit for every page is set to 10 by default.
+                b.  "?latitude=<latitude value>&&longitude=<longitude value>" : User can pass a coordinate pair and the result will be list of all user details sorted to the distance from the given pair of coordinate values.
+    
+    3. "updateUser" -> 
+            User can pass an object with a property of mobile and the property to updated to update their details in the db.
+    
+    4. "deleteUser" -> 
+            Endpoint to delete an user details. The request body requires only the mobile number corresponding to the user details to be removed.
